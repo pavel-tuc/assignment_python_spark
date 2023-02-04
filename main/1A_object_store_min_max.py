@@ -47,7 +47,7 @@ def write_to_json(data: dict, file_name: str) -> None:
     Writes data in dict as json into output folder
     """
     json_object = json.dumps(data)
-    with open(f"./output/{file_name}", "w") as file:
+    with open(f"./output/{file_name}_{datetime.datetime.now().strftime('%Y%m%dT%H%M%SZ')}.json", "w") as file:
         file.write(json_object)
 
 
@@ -83,6 +83,6 @@ if __name__ == '__main__':
     # A
     print(min_max_month(full_paths, "s3"))
     # B
-    write_to_json(min_max_month(full_paths, "s3"), "result.json")
+    write_to_json(min_max_month(full_paths, "s3"), "result")
     # C
-    write_to_json(missing_months(full_paths, "s3"), "result_enriched.json")
+    write_to_json(missing_months(full_paths, "s3"), "result_enriched")
